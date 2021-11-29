@@ -1,0 +1,70 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-text: hsla(0, 0%, 100%, 1);
+  --clr-text-dim: hsla(232, 15%, 58%, 1);
+  --clr-bg: hsla(232, 23%, 28%, 1);
+  --clr-bg-cont: hsla(232, 19%, 38%, 1);
+  --clr-overlay: hsla(0, 0%, 0%, 0.62);
+  --clr-action: hsla(357, 63%, 63%, 1);
+  --clr-btn-act: var(--clr-action);
+  --clr-btn-cancel: hsla(232, 14%, 58%, 1);
+  --clr-set-checked: hsla(104, 100%, 50%, 0.47);
+
+  --padding-main: 1rem;
+
+  --border-radius-small: 4px;
+  --border-radius-big: 10px;
+
+  --max-width: 600px;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+}
+
+.page-container {
+  padding: 0 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.btn {
+  color: var(--clr-text);
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-small);
+  background-color: var(--clr-action);
+  padding: 0.5em 1em;
+  font-size: 1rem;
+
+  &--action {
+    background-color: var(--clr-btn-act);
+    color: var(--clr-text);
+  }
+
+  &--cancel {
+    background-color: var(--clr-btn-cancel);
+    color: var(--clr-bg);
+  }
+}
+
+a {
+  color: var(--clr-text);
+  text-decoration: none;
+}
+
+
+@import './styles/Login.scss';
+@import './styles/Select.scss';
+@import './styles/SelectProgram.scss';
+@import './styles/Confirm.scss';
+@import './styles/Perform.scss';
+@import './styles/Summary.scss';
