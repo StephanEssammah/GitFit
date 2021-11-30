@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import PerformArticle from './subcomponents/PerformArticle';
+
 const Perform = () => {
   const prograam = {
     squats: [
@@ -19,13 +20,14 @@ const Perform = () => {
       ]
   }
   const [ state, setState ] = useState(prograam)
+  const [ session, setSession ] = useState([])
   
   const el = useRef();
   const navigate = useNavigate();
   const handleCancelClick = () => {
     alert('confirm cancel')
   }
-  
+  /*
   const handleFinishClick = () => {
     const currArr = [];
 
@@ -56,10 +58,6 @@ const Perform = () => {
     })
 
     console.log(session);
-    
-    
-
-
     //console.log(allInputs)
 
     const workoutSessionObject = {
@@ -85,18 +83,9 @@ const Perform = () => {
         }
       ]
     }
-
-    
-    
-
-    
-
-    // navigate('/summary')
   }
+  */
 
-
-  
-   
   const programs = [
     {
       id: 1,
@@ -154,6 +143,11 @@ const Perform = () => {
     },
   ]
 
+  const handleFinishClick = () => {
+    console.log(session)
+    navigate('/summary')
+  }
+
   return (
     <div className="perform">
       <header className="perform__header">
@@ -164,7 +158,7 @@ const Perform = () => {
         <p>46:29</p>
       </header>
       <div ref={el}>
-        {programs[0].exercises.map((exercise, index) => <PerformArticle state={state} setState={setState}key={exercise.name} exercise={exercise} />)}
+        {programs[0].exercises.map((exercise, index) => <PerformArticle setSession={setSession} state={state} setState={setState}key={exercise.name} exercise={exercise} />)}
       </div>
       <div className="perform__buttons">
         <button onClick={handleCancelClick} className="btn btn--cancel">Cancel</button>

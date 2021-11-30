@@ -8,18 +8,20 @@
 
 :root {
   --clr-text: hsla(0, 0%, 100%, 1);
-  --clr-text-dim: hsla(232, 15%, 58%, 1);
+  // --clr-text-dim: hsla(232, 15%, 58%, 1);
+  --clr-text-dim: hsla(0, 0%, 100%, .6);
   --clr-bg: hsla(232, 23%, 28%, 1);
   --clr-bg-cont: hsla(232, 19%, 38%, 1);
   --clr-overlay: hsla(0, 0%, 0%, 0.62);
   --clr-action: hsla(357, 63%, 63%, 1);
   --clr-btn-act: var(--clr-action);
   --clr-btn-cancel: hsla(232, 14%, 58%, 1);
-  --clr-set-checked: hsla(104, 100%, 50%, 0.47);
+  --clr-set-done: hsla(104, 100%, 50%, 0.27);
+  --clr-checkbox: hsla(231, 23%, 76%, .7);
 
   --padding-main: 1rem;
 
-  --border-radius-small: 4px;
+  --border-radius-small: 5px;
   --border-radius-big: 10px;
 
   --max-width: 600px;

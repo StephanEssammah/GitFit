@@ -1,40 +1,27 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom'
 
-const PerformArticle = ({ exercise, index, state, setState }) => {
+const PerformArticle = ({ exercise, index, state, setState, setSession }) => {
   const amount = Array.from({length: exercise.sets});
+  const initialState = amount.map(item => {
+    return {weight: '', reps: ''}
+  })
+  const [ weightReps, setWeightReps ] = useState(initialState)
+  const titleRef = useRef()
 
-  const titleRef = useRef();
-  const handleOnChange = e => {
-    const exerciseName = titleRef.current.textContent;
-    const groupName = `${titleRef.current.textContent}-${e.target.id}`;
-    const currId = e.target.id.match(/\d+$/);
-    const type = e.target.id.match(/^\w+/);
-
-    console.log(type);
-    // setState(prevState => {
-    //   return {...prevState, {e.target.value} }
-    // })
+  const handleWeightChange = (e, index) => {
+    const state = [...weightReps]
+    state[index].weight = e.target.value
+    const exerciseName = titleRef.current.textContent
+    setWeightReps(state)
+    setSession(prevState => ({...prevState, [exerciseName]: weightReps}) )
   }
-  console.log(state);
-
-  const userData = {
-    name: [
-      {
-        weight: 64,
-        reps: 12
-      },
-      {
-        weight: 64,
-        reps: 10
-      },
-      {
-        weight: 64,
-        reps: 7
-      },
-    ]
+  const handleRepsChange = (e, index) => {
+    const state = [...weightReps]
+    state[index].reps = e.target.value
+    const exerciseName = titleRef.current.textContent
+    setWeightReps(state)
+    setSession(prevState => ({...prevState, [exerciseName]: weightReps}) )
   }
-
 
   return (
     <article id={`${exercise.name}-${index}`} className="perform__mid">
@@ -52,8 +39,8 @@ const PerformArticle = ({ exercise, index, state, setState }) => {
             <div className="perform__grid" key={index}>
               <p>{index + 1}</p>
               <p>30kg x 12</p> 
-              <input id={`kg-${index}`} onChange={handleOnChange} value={state[`${titleRef}-kg-${index}`]} size="1" data-input-data className="inputOne perform__mid__input" type="number"/>
-              <input id={`reps-${index}`} onChange={handleOnChange} value={state[`${titleRef}-reps-${index}`]} size="1" data-input-data className="inputTwo perform__mid__input" type="number"/>
+              <input onChange={e => handleWeightChange(e, index)} value={weightReps[index].weight} size="1" data-input-data className="inputOne perform__mid__input" type="number"/>
+              <input onChange={e => handleRepsChange(e, index)} value={weightReps[index].reps} size="1" data-input-data className="inputTwo perform__mid__input" type="number"/>
               <input size="1" className="perform__mid__input-checkbox" type="checkbox"/>
             </div>
           )
