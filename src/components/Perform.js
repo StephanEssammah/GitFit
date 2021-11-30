@@ -1,14 +1,17 @@
 import { useRef, useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PerformArticle from './subcomponents/PerformArticle';
 import Timer from './subcomponents/Timer';
 import { setTotalTime } from '../redux/name/name.actions';
+import RestTimer from './subcomponents/RestTimer';
+
 
 const Perform = () => {
   const [timer, setTimer] = useState(0);
   const [session, setSession] = useState([]);
+
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -36,7 +39,7 @@ const Perform = () => {
       <header className="perform__header">
         <div className="perform__header__top">
           <h1>Legday</h1>
-          <button>Timer</button>
+          <RestTimer />
         </div>
         <Timer timer={timer} setTimer={setTimer}/>
       </header>

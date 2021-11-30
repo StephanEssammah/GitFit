@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUserName } from '../redux/name/name.actions';
 
 const Login = () => {
