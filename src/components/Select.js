@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom'
 import SelectProgram from './subcomponents/SelectProgram';
 import ConfirmModal from './ConfirmModal';
 import { programs } from './utils/mockPrograms';
+import { useSelector } from 'react-redux'
 
 const Select = () => {
   const [modal, setModal] = useState({});
   const [isModal, setIsModal] = useState(false);
+
+  const currentName = useSelector(state => state.name)
+
+  console.log('state name:', currentName)
 
   return (
     <>

@@ -1,13 +1,19 @@
 import { useRef, useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import PerformArticle from './subcomponents/PerformArticle';
+import Timer from './subcomponents/Timer';
+import { setTotalTime } from '../redux/name/name.actions';
 
 const Perform = () => {
-  const [ session, setSession ] = useState([])
+  const [timer, setTimer] = useState(0);
+  const [session, setSession] = useState([]);
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const el = useRef();
+
   const programs = location.state || null;
 
   const handleCancelClick = () => {
@@ -15,7 +21,7 @@ const Perform = () => {
   }
   
   const handleFinishClick = () => {
-    console.log(session)
+    dispatch(setTotalTime(timer))
     navigate('/summary')
   }
   
@@ -32,7 +38,7 @@ const Perform = () => {
           <h1>Legday</h1>
           <button>Timer</button>
         </div>
-        <p>46:29</p>
+        <Timer timer={timer} setTimer={setTimer}/>
       </header>
       <div ref={el}>
         {programs && programs.exercises.map(exercise => <PerformArticle setSession={setSession} key={exercise.name} exercise={exercise} />)}
