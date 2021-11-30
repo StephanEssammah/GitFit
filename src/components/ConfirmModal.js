@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
-const Confirm = ({ program, setIsModal }) => {
-
-  console.log(program)
+const ConfirmModal = ({ program, setIsModal }) => {
+  const navigate = useNavigate();
   
   const handleStartClick = e => {
     e.stopPropagation();
+    navigate('/perform', {state: program})
   }
+
   const handleCancelClick = e => {
     e.stopPropagation();
-    setIsModal(false)
+    setIsModal(false);
   }
 
   return (
@@ -18,7 +20,7 @@ const Confirm = ({ program, setIsModal }) => {
         <header className="program__header">
           <h2 className="program__header__title">{program.title}</h2>
           <Link to="/edit-program">
-            <button className="program__header__edit-button">edit</button>
+            <button className="btn-options program__header__edit-button">edit</button>
           </Link>
         </header>
         <ul className="program__list">
@@ -26,11 +28,11 @@ const Confirm = ({ program, setIsModal }) => {
         </ul>
         <footer className="confirm__footer">
           <button className="btn btn--cancel confirm__footer__btn--cancel" onClick={handleCancelClick}>Cancel</button>
-          <Link to="/Perform"><button className="btn btn--action confirm__footer__btn--confirm" onClick={handleStartClick}>Start workout</button></Link>
+          <button className="btn btn--action confirm__footer__btn--confirm" onClick={handleStartClick}>Start workout</button>
         </footer>
       </article>
     </div>
   );
 }
 
-export default Confirm;
+export default ConfirmModal;

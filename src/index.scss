@@ -58,6 +58,16 @@ body {
   }
 }
 
+.btn-options {
+  border: none;
+  background: none;
+  border-radius: var(--border-radius-big);
+  background-color: var(--clr-bg);
+  width: 5em;
+  height: 2em;
+  color: var(--clr-text-dim)
+}
+
 a {
   color: var(--clr-text);
   text-decoration: none;
@@ -67,6 +77,6 @@ a {
 @import './styles/Login.scss';
 @import './styles/Select.scss';
 @import './styles/SelectProgram.scss';
-@import './styles/Confirm.scss';
+@import './styles/ConfirmModal.scss';
 @import './styles/Perform.scss';
 @import './styles/Summary.scss';

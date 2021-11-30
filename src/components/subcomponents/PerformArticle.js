@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
+import PerformSet from './PerformSet';
 
-const PerformArticle = ({ exercise, index, state, setState, setSession }) => {
-  const amount = Array.from({length: exercise.sets});
-  const initialState = amount.map(item => {
+const PerformArticle = ({ exercise, setSession }) => {
+  const amountOfSets = Array.from({length: exercise.sets});
+  const initialState = amountOfSets.map(() => {
     return {weight: '', reps: ''}
   })
   const [ weightReps, setWeightReps ] = useState(initialState)
@@ -24,7 +25,7 @@ const PerformArticle = ({ exercise, index, state, setState, setSession }) => {
   }
 
   return (
-    <article id={`${exercise.name}-${index}`} className="perform__mid">
+    <article className="perform__mid">
       <h2 ref={titleRef} className="perform__mid__title">{exercise.name}</h2>
       <article>
         <header className="perform__grid">
@@ -34,17 +35,7 @@ const PerformArticle = ({ exercise, index, state, setState, setSession }) => {
           <h3>Reps</h3>
           <p></p>
         </header>
-        {amount.map((set, index) => {
-          return (
-            <div className="perform__grid" key={index}>
-              <p>{index + 1}</p>
-              <p>30kg x 12</p> 
-              <input onChange={e => handleWeightChange(e, index)} value={weightReps[index].weight} size="1" data-input-data className="inputOne perform__mid__input" type="number"/>
-              <input onChange={e => handleRepsChange(e, index)} value={weightReps[index].reps} size="1" data-input-data className="inputTwo perform__mid__input" type="number"/>
-              <input size="1" className="perform__mid__input-checkbox" type="checkbox"/>
-            </div>
-          )
-        })}
+        {amountOfSets.map((__, index) => <PerformSet key={index} index={index} weightReps={weightReps} titleRef={titleRef} handleWeightChange={handleWeightChange} handleRepsChange={handleRepsChange}   />)}
       </article>
     </article>
   );

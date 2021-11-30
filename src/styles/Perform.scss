@@ -37,6 +37,7 @@
   }
 
   &__input-checkbox {
+    justify-self: end;
     position: relative;
     font-size: inherit;
     font-size: 1em;
@@ -93,11 +94,21 @@
 
   &.done {
     &::after {
-      transform: translateX(calc(0% - 3em));
+      transform: translateX(0%);
     }
 
     & .perform__mid__input {
       // background-color: transparent;
     }
+  }
+}
+
+.perform__buttons {
+  margin: 1em 0em;
+  display: flex;
+  gap: 1em;
+
+  & > * {
+    width: 100%;
   }
 }

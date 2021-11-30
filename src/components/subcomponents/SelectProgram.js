@@ -12,7 +12,7 @@ const SelectProgram = ( {program, setModal, setIsModal} ) => {
       <header className="program__header">
         <h2 className="program__header__title">{program.title}</h2>
         <Link to="/edit-program">
-          <button className="program__header__edit-button">edit</button>
+          <button className="btn-options program__header__edit-button">edit</button>
         </Link>
       </header>
       <ul className="program__list">
