@@ -17,9 +17,7 @@ const Timer = ({ timer, setTimer }) => {
   }, [setTimer]);
 
   return (
-    <div>
-      <p>{time}</p>
-    </div>
+    <p>{time}</p>
   )
 }
 

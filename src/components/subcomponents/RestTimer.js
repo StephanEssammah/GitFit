@@ -3,29 +3,32 @@ import { useState, useEffect } from 'react'
 const RestTimer = () => {
   const [restTimer, setRestTimer] = useState('Timer');
   const [counter, setCounter] = useState(120);
-  const [time, setTime] = useState();
+  const [intervalId, setIntervalId] = useState(0);
+  
+  const handleClick = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(0);
+      return;
+    }
+    const newIntervalId = setInterval(() => {
+      setCounter(prevCount => prevCount - 1);
+    }, 1000);
+    setIntervalId(newIntervalId);
+  }
 
-  const clock = () => {
-    const seconds = counter
-    console.log(seconds)
+  useEffect(() => {
+    const seconds = counter;
     const format = val => `0${Math.floor(val)}`.slice(-2);
     const minutes = (seconds % 3600) / 60;
     const time = [minutes, seconds % 60].map(format).join(':');
+    console.log(time);
     setRestTimer(time)
-  }
-  
-  const startTimer = () => {
-    clearInterval(time);
-    
-    setTime(setInterval(() => {
-      setCounter(counter - 1)
-      clock()
-    }, 1000));
-  }
+  }, [counter])
  
 
   return (
-    <button onClick={startTimer}className="perform__header__top__timer">{restTimer}</button>
+    <button onClick={handleClick}className="perform__header__top__timer">{restTimer}</button>
   )
 }
 

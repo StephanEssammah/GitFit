@@ -16,7 +16,7 @@
   --clr-bg-cont: hsla(232, 19%, 38%, 1);
   --clr-overlay: hsla(0, 0%, 0%, 0.62);
   --clr-action: hsla(357, 63%, 63%, 1);
-  --clr-action-hover: rgb(209, 76, 83);
+  --clr-action-hover: hsla(357, 63%, 56%, 1); // lightness down(-) 4%, s orig s -5%
   --clr-btn-act: var(--clr-action);
   --clr-btn-cancel: hsla(232, 14%, 58%, 1);
   --clr-set-done: hsla(104, 100%, 50%, 0.27);
@@ -27,7 +27,7 @@
   --border-radius-small: 5px;
   --border-radius-big: 10px;
 
-  --max-width: 600px;
+  --max-width: 35em;
 
   --font-heading: 'Montserrat', sans-serif;
   --font-text: 'Noto Sans', sans-serif;
@@ -37,6 +37,7 @@ body {
   background-color: var(--clr-bg);
   color: var(--clr-text);
   font-family: var(--font-text);
+  margin-top: 2em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,8 +45,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-container {
-  padding: 0 1rem;
   max-width: var(--max-width);
+  padding: 0 1rem;
   margin: 0 auto;
 }
 
@@ -55,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   border-radius: var(--border-radius-small);
   background-color: var(--clr-action);
-  padding: 0.5em 1em;
+  padding: 0.7em 1em;
   font-size: 1rem;
 
   &--action {
@@ -79,7 +80,38 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--clr-bg);
   width: 5em;
   height: 2em;
-  color: var(--clr-text-dim)
+  color: var(--clr-text-dim);
+  cursor: help;
+
+  & > span,
+  & > span::after,
+  & > span::before {
+    display: block;
+    width: .7em;
+    height: .7em;
+    background-color: var(--clr-checkbox);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  & > span {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+    }
+
+    &::after {
+      transform: translateX(-1.2em);
+    }
+    &::before {
+      transform: translateX(1.2em);
+    }
+  }
 }
 
 a {

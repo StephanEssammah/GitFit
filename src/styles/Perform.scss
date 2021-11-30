@@ -1,5 +1,5 @@
 .perform__header {
-  padding: var(--padding-main);
+  // padding: var(--padding-main);
 
   &__top {
     display: flex;
@@ -7,6 +7,7 @@
     align-items: center;
 
     &__timer {
+      font-family: var(--font-text);
       background-color: var(--clr-bg-cont);
       border: none;
       border-radius: var(--border-radius-small);
