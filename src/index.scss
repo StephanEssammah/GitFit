@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;700&display=swap');
+
 *,
 *::after,
 *::before {
@@ -14,6 +16,7 @@
   --clr-bg-cont: hsla(232, 19%, 38%, 1);
   --clr-overlay: hsla(0, 0%, 0%, 0.62);
   --clr-action: hsla(357, 63%, 63%, 1);
+  --clr-action-hover: rgb(209, 76, 83);
   --clr-btn-act: var(--clr-action);
   --clr-btn-cancel: hsla(232, 14%, 58%, 1);
   --clr-set-done: hsla(104, 100%, 50%, 0.27);
@@ -25,11 +28,19 @@
   --border-radius-big: 10px;
 
   --max-width: 600px;
+
+  --font-heading: 'Montserrat', sans-serif;
+  --font-text: 'Noto Sans', sans-serif;
 }
 
 body {
   background-color: var(--clr-bg);
   color: var(--clr-text);
+  font-family: var(--font-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 .page-container {
@@ -50,6 +61,9 @@ body {
   &--action {
     background-color: var(--clr-btn-act);
     color: var(--clr-text);
+    &:hover{
+      background-color: var(--clr-action-hover);
+    }
   }
 
   &--cancel {
