@@ -1,0 +1,29 @@
+.program {
+  background-color: var(--clr-bg-cont);
+  width: 90vw;
+  padding: var(--padding-main);
+  margin: 1em;
+  border-radius: var(--border-radius-big);
+  
+  &__list {
+    list-style-position: inside;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      margin-bottom: 0.5em;
+    }
+
+    &__edit-button{
+      padding: 0.3em 1em;
+    }
+  }
+
+
+
+
+
+}

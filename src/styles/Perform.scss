@@ -1,0 +1,114 @@
+
+.perform__header {
+  padding: var(--padding-main);
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.perform__mid {
+  margin-top: 2em;
+  padding: 0.5em 1em;
+  background-color: var(--clr-bg-cont);
+  border-radius: var(--border-radius-big);
+  
+  &__title {
+    margin-bottom: 1em;
+  }
+  
+  &__input {
+    justify-self: center;
+    width: 80%;
+    height: 100%;
+    border: none;
+    border-radius: var(--border-radius-small);
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    text-align: center;
+    padding: .3em 0;
+
+    appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
+  }
+
+  &__input-checkbox {
+    justify-self: end;
+    position: relative;
+    font-size: inherit;
+    font-size: 1em;
+    width: 1.5em;
+    height: 1.5em;
+    appearance: none;
+    border-radius: var(--border-radius-small);
+    border: 2px solid var(--clr-text-dim);
+    cursor: pointer;
+
+    &::before {
+      content: '✓';
+      color: var(--clr-text-dim);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      opacity: 0;
+      // transform-origin: center;
+      transform: translate(0%, -100%) scale(2);
+      transition: opacity 0ms;
+    }
+    
+    &:checked::before {
+      transform: scale(1);
+      opacity: 1;
+      transition: opacity 50ms, transform 130ms cubic-bezier(.99,1.12,0,1.66);
+    }
+  }
+}
+.perform__grid{
+  position: relative;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 3ch 4fr 2fr 2fr 1fr;
+  align-items: center;
+  text-align: center;
+  gap: .5em;
+  margin-bottom: .5em;
+  border-radius: var(--border-radius-small);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    inset: 0;
+    background-color: var(--clr-set-done);
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: transform 200ms ease-in-out;
+  }
+
+  &.done {
+    &::after {
+      transform: translateX(0%);
+    }
+
+    & .perform__mid__input {
+      // background-color: transparent;
+    }
+  }
+}
+
+.perform__buttons {
+  margin: 1em 0em;
+  display: flex;
+  gap: 1em;
+
+  & > * {
+    width: 100%;
+  }
+}

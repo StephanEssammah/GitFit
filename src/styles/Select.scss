@@ -1,0 +1,15 @@
+.select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    &__btn-add-template {
+        border-style: none;
+        padding: 0.5rem 2rem;
+    }
+}
+
+.select__btn-add-template {
+    margin-top: 2em;
+}
