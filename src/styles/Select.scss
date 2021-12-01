@@ -5,11 +5,24 @@
     height: 100vh;
 
     &__btn-add-template {
+        background-color: var(--clr-bg-cont);
         border-style: none;
-        padding: 0.5rem 2rem;
-    }
-}
+        border-radius: var(--border-radius-small);
+        color: white;
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: .75em;
 
-.select__btn-add-template {
-    margin-top: 2em;
+        &::before {
+            content: '+';
+            font-size: 1em;
+            justify-content: center;
+            line-height: 1;
+            border: 1px solid white;
+            display: block;
+            border-radius: 50%;
+            padding: .15em;
+        }
+    }
 }

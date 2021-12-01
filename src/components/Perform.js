@@ -38,10 +38,13 @@ const Perform = () => {
     <div className="perform">
       <header className="perform__header">
         <div className="perform__header__top">
-          <h1>Legday</h1>
+          <div className="perform__header__top__info">
+            <h1>Legday</h1>
+            <Timer timer={timer} setTimer={setTimer}/>
+
+          </div>
           <RestTimer />
         </div>
-        <Timer timer={timer} setTimer={setTimer}/>
       </header>
       <div ref={el}>
         {programs && programs.exercises.map(exercise => <PerformArticle setSession={setSession} key={exercise.name} exercise={exercise} />)}

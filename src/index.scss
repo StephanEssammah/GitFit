@@ -37,7 +37,7 @@ body {
   background-color: var(--clr-bg);
   color: var(--clr-text);
   font-family: var(--font-text);
-  margin-top: 2em;
+  margin-top: 3rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -125,4 +125,5 @@ a {
 @import './styles/SelectProgram.scss';
 @import './styles/ConfirmModal.scss';
 @import './styles/Perform.scss';
+@import './styles/RestTimer.scss';
 @import './styles/Summary.scss';
