@@ -4,27 +4,20 @@ const RestTimer = () => {
   const [restTimer, setRestTimer] = useState('Timer');
   const [counter, setCounter] = useState(null);
   const [intervalId, setIntervalId] = useState(null);
-  
-  const handleClick = () => {
-    console.log('count', counter)
-    if (!counter){
-      setCounter(120)
-    }
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-      return;
-    }
-    startTimer();
-  }
-  
+
   const startTimer = () => {
     if(counter) return;
     const newIntervalId = setInterval(() => {
       setCounter(prevCount => prevCount - 1);
     }, 1000);
     setIntervalId(newIntervalId);
+  }
 
+  const resetRestTimer = () => {
+    clearInterval(intervalId)
+    setIntervalId(null)
+    setCounter(null)
+    setRestTimer('Timer')
   }
 
   const handleDecrease = () => {
@@ -40,12 +33,6 @@ const RestTimer = () => {
     });
     
   }
-  const handleSkip = () => {
-    clearInterval(intervalId)
-    setIntervalId(null)
-    setCounter(null)
-    setRestTimer('Timer')
-  }
 
   const handleIncrease = () => {
     setCounter(prevValue => prevValue + 30);
@@ -60,10 +47,7 @@ const RestTimer = () => {
       const time = [minutes, seconds % 60].map(format).join(':');
       setRestTimer(time)
       if (counter === 0){
-          clearInterval(intervalId)
-          setIntervalId(null)
-          setCounter(null);
-          setRestTimer('Timer')
+          resetRestTimer()
       }
     }
   }, [counter])
@@ -74,7 +58,7 @@ const RestTimer = () => {
       <div className="rest-timer__btn rest-timer__btn--main">{restTimer}</div>
       <div className="rest-timer__options">
         <button onClick={handleDecrease} className="rest-timer__btn rest-timer__btn--minus">-15s</button>
-        <button onClick={handleSkip} className="rest-timer__btn rest-timer__btn--skip">skip</button>
+        <button onClick={resetRestTimer} className="rest-timer__btn rest-timer__btn--skip">skip</button>
         <button onClick={handleIncrease} className="rest-timer__btn rest-timer__btn--plus">+30s</button>
       </div>
     </div>

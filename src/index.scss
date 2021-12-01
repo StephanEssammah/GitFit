@@ -23,6 +23,7 @@
   --clr-checkbox: hsla(231, 23%, 76%, .7);
 
   --padding-main: 1rem;
+  --margin-top: 3rem;
 
   --border-radius-small: 5px;
   --border-radius-big: 10px;
@@ -37,7 +38,7 @@ body {
   background-color: var(--clr-bg);
   color: var(--clr-text);
   font-family: var(--font-text);
-  margin-top: 3rem;
+  margin-top: var(--margin-top);
 }
 
 h1, h2, h3, h4, h5, h6 {

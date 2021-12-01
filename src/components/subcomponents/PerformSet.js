@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PerformSet = ({ index, weightReps, handleRepsChange, handleWeightChange, titleRef }) => {
+const PerformSet = ({ index, weightReps, handleRepsChange, handleWeightChange }) => {
   const [isChecked, setIsChecked] = useState(false)
   return (
     <div className={`perform__grid ${isChecked ? 'done' : ''}`}>

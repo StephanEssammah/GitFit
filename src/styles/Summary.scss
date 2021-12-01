@@ -1,9 +1,9 @@
 .summary {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - var(--margin-top));
+  margin-top: calc(var(--margin-top) * -1);
   flex-direction: column;
   justify-content: center;
-
 
   &__greeting {
     text-align: center;
