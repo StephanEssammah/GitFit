@@ -1,16 +1,27 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { displayTime } from './utils/timeConvertion'
+
 
 const Summary = () => {
+  const totalTime = useSelector(state => state.state.totalTime)
+
+  
+
   return (
     <div className="summary">
       <div className="summary__greeting">
         <h1>Great Job!</h1>
-        <h2>You completed your ... workout, and you set ... new records!</h2>
+        <p>
+          You completed your ... workout.
+          <br/>
+          You set ... new records!
+        </p>
       </div>
       <div className="summary__info">
         <h3 className="summary__info__heading">Legday</h3>
         <div className="summary__info__stats">
-          <p>44m</p>
+          <p>{displayTime(totalTime)}</p>
           <p>4625kg</p>
           <p>1 PR</p>
         </div>

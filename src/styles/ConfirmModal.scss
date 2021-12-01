@@ -9,6 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  & > * {
+    max-width: var(--max-width);
+  }
 }
 
 .confirm__footer {

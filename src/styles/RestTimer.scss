@@ -1,0 +1,37 @@
+
+
+.rest-timer {
+  background-color: var(--clr-bg-cont);
+  border-radius: var(--border-radius-small);
+}
+
+.rest-timer__btn {
+  margin: 0 auto;
+  font-family: var(--font-text);
+  background-color: transparent;
+  border: none;
+  padding: 0.5em 1em;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5em;
+  cursor: pointer;
+  
+  &--main::before {
+    content: '';
+    display: inline-block;
+    background-image: url('../icons/restTimer.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    width: auto;
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
+.rest-timer__options {
+  display: flex;
+  border-top: 2px solid var(--clr-bg);
+}

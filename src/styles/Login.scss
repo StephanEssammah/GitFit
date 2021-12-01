@@ -5,9 +5,65 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: calc(100vh - 3rem);
 
     &__header {
-        color: var(--clr-text);
+      color: var(--clr-text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5em;
+  }
+
+    &__inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      &__name {
+        margin: 2em 0em;
+        position: relative;
+        & input {
+          color: var(--clr-text);
+          font-size: 1.3em;
+          padding: .5em 0em;
+          margin: 0;
+          background: none;
+          border: none;
+          border-bottom: 3px solid var(--clr-checkbox);
+          &:focus {
+            outline: none;
+            border-color: var(--clr-action);
+          }
+          &::placeholder {
+            opacity: 0;
+          }
+          
+        }
+        & input:focus + span {
+          transform: translateY(-130%) scale(.9);
+          color: var(--clr-action);
+        }
+        & input:not(:placeholder-shown) + span {
+          transform: translateY(-130%) scale(.9);
+        }
+        
+        & > span {
+          transform-origin: left;
+          color: var(--clr-text-dim);
+          position: absolute;
+          top: 30%;
+          left: 0;
+          width: 100%;
+          transition: transform 100ms ease-in-out;
+        }
     }
+    &__link {
+      width: 100%;
+    }
+
+    &__button{
+      width: 100%;
+      
+    }
+  }
 }

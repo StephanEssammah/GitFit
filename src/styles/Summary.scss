@@ -7,12 +7,17 @@
 
   &__greeting {
     text-align: center;
+    & > p {
+      font-size: 1.25em;
+      font-weight: 200;
+    }
   }
   
   &__info {
     margin-top: 2em;
     padding: var(--padding-main);
     background-color: var(--clr-bg-cont);
+    border-radius: var(--border-radius-big);
 
     &__exercises {
       margin-top: 0.5em;
