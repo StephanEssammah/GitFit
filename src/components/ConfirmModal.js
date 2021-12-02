@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router'
+import { displayTime } from './utils/timeConvertion'
 
-const ConfirmModal = ({ program, setIsModal }) => {
+const ConfirmModal = ({ passedFromSelect, setIsModal }) => {
+
+  const { program, averageTime, daysSince } = passedFromSelect
   const navigate = useNavigate();
   
   const handleStartClick = e => {
@@ -26,6 +29,10 @@ const ConfirmModal = ({ program, setIsModal }) => {
         <ul className="program__list">
           {program.exercises.map(exercise => <li className="program__list-item" key={exercise.name}>{`${exercise.sets} x ${exercise.name}`}</li>)}
         </ul>
+        <div className="program__stats">
+          {daysSince && <p className="program__stats__days-since">{daysSince}</p>}
+          {averageTime > 0 && <p className="program__stats__average-time">~ {displayTime(averageTime)}</p>}
+        </div>
         <footer className="confirm__footer">
           <button className="btn btn--cancel confirm__footer__btn--cancel" onClick={handleCancelClick}>Cancel</button>
           <button className="btn btn--action confirm__footer__btn--confirm" onClick={handleStartClick}>Start workout</button>

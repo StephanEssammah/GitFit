@@ -1,14 +1,39 @@
-const nameReducer = (state = {name: 'stephan'}, { type, payload }) => {
+import { allUsers } from '../../components/utils/mockPrograms'
 
+const calculateTotalVolume = session => {
+  const exercises = Object.keys(session.exercises)
+  let volume = 0;
+
+  exercises.forEach(exercise => {
+    session.exercises[exercise].forEach(set => volume += Number(set.weight) * Number(set.reps));
+  })
+  return volume;
+}
+
+const nameReducer = (state = allUsers.userStephan, { type, payload }) => {
   switch (type) {
-      case 'setName': {
-         return {name: payload} 
+      case 'setData': {
+         return payload
         }
       case 'setTotalTime':
          return {
             ...state, totalTime: payload
          };
-       default: return state;
+      case 'setProgram': {
+        const totalVolume = calculateTotalVolume(payload);
+        const newState = {...state}
+        payload.volume = totalVolume;
+        newState.sessions.unshift(payload)
+
+      return newState;
+      }
+      case 'toggleRestTimer':
+        const on = payload[0]
+        const time = payload[1]
+         return {
+            ...state, restTimer: {status: on, time}
+         };
+      default: return state;
   }
 
 };

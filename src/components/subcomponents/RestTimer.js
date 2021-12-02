@@ -1,22 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { formatTime } from '../utils/formatTime';
 
 const RestTimer = () => {
   const [restTimer, setRestTimer] = useState('Timer');
   const [counter, setCounter] = useState(null);
   const [intervalId, setIntervalId] = useState(null);
-  
-  const handleClick = () => {
-    console.log('count', counter)
-    if (!counter){
-      setCounter(120)
-    }
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-      return;
-    }
-    startTimer();
-  }
+
+  const stateRestTimer = useSelector(state => state.state.restTimer)
   
   const startTimer = () => {
     if(counter) return;
@@ -24,7 +15,13 @@ const RestTimer = () => {
       setCounter(prevCount => prevCount - 1);
     }, 1000);
     setIntervalId(newIntervalId);
+  }
 
+  const resetRestTimer = () => {
+    clearInterval(intervalId)
+    setIntervalId(null)
+    setCounter(null)
+    setRestTimer('Timer')
   }
 
   const handleDecrease = () => {
@@ -38,13 +35,6 @@ const RestTimer = () => {
       startTimer();
       return prevValue - 15;
     });
-    
-  }
-  const handleSkip = () => {
-    clearInterval(intervalId)
-    setIntervalId(null)
-    setCounter(null)
-    setRestTimer('Timer')
   }
 
   const handleIncrease = () => {
@@ -54,19 +44,23 @@ const RestTimer = () => {
 
   useEffect(() => {
     if (counter !== null) {
-      const seconds = counter;
-      const format = val => `0${Math.floor(val)}`.slice(-2);
-      const minutes = (seconds % 3600) / 60;
-      const time = [minutes, seconds % 60].map(format).join(':');
+      const time = formatTime(counter)
       setRestTimer(time)
       if (counter === 0){
-          clearInterval(intervalId)
-          setIntervalId(null)
-          setCounter(null);
-          setRestTimer('Timer')
+        resetRestTimer()
       }
     }
   }, [counter])
+
+  useEffect(() => {
+    if (stateRestTimer) {
+      if (stateRestTimer.status === 'on') {
+        console.log(stateRestTimer.time)
+        setCounter(stateRestTimer.time)
+        startTimer()
+      }
+    }
+  }, [stateRestTimer])
  
 
   return (
@@ -74,7 +68,7 @@ const RestTimer = () => {
       <div className="rest-timer__btn rest-timer__btn--main">{restTimer}</div>
       <div className="rest-timer__options">
         <button onClick={handleDecrease} className="rest-timer__btn rest-timer__btn--minus">-15s</button>
-        <button onClick={handleSkip} className="rest-timer__btn rest-timer__btn--skip">skip</button>
+        <button onClick={resetRestTimer} className="rest-timer__btn rest-timer__btn--skip">skip</button>
         <button onClick={handleIncrease} className="rest-timer__btn rest-timer__btn--plus">+30s</button>
       </div>
     </div>

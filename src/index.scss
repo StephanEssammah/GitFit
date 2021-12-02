@@ -12,7 +12,9 @@
   --clr-text: hsla(0, 0%, 100%, 1);
   // --clr-text-dim: hsla(232, 15%, 58%, 1);
   --clr-text-dim: hsla(0, 0%, 100%, .6);
+  --clr-placeholder: hsla(0, 0%, 100%, .4);
   --clr-bg: hsla(232, 23%, 28%, 1);
+  --clr-bg-opacity: hsla(232, 23%, 28%, .9);
   --clr-bg-cont: hsla(232, 19%, 38%, 1);
   --clr-overlay: hsla(0, 0%, 0%, 0.62);
   --clr-action: hsla(357, 63%, 63%, 1);
@@ -23,6 +25,7 @@
   --clr-checkbox: hsla(231, 23%, 76%, .7);
 
   --padding-main: 1rem;
+  --margin-top: 1em;
 
   --border-radius-small: 5px;
   --border-radius-big: 10px;
@@ -37,17 +40,13 @@ body {
   background-color: var(--clr-bg);
   color: var(--clr-text);
   font-family: var(--font-text);
-  margin-top: 3rem;
+  max-width: var(--max-width);
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-}
-
-.page-container {
-  max-width: var(--max-width);
-  padding: 0 1rem;
-  margin: 0 auto;
 }
 
 .btn {
@@ -78,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
   background: none;
   border-radius: var(--border-radius-big);
   background-color: var(--clr-bg);
-  width: 5em;
+  width: 4.5em;
   height: 2em;
   color: var(--clr-text-dim);
   cursor: help;
@@ -87,8 +86,8 @@ h1, h2, h3, h4, h5, h6 {
   & > span::after,
   & > span::before {
     display: block;
-    width: .7em;
-    height: .7em;
+    width: .5em;
+    height: .5em;
     background-color: var(--clr-checkbox);
     border-radius: 50%;
     pointer-events: none;

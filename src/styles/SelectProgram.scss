@@ -5,8 +5,19 @@
   margin: 1em;
   border-radius: var(--border-radius-big);
   
+  &__stats{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    color: var(--clr-text-dim);
+    border-top: 2px solid var(--clr-bg);
+    padding-top: 0.8em;
+  }
+
   &__list {
     list-style-position: inside;
+    margin-bottom: 1em;
   }
 
   &__header {

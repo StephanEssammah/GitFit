@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import PerformArticle from './subcomponents/PerformArticle';
 import Timer from './subcomponents/Timer';
-import { setTotalTime } from '../redux/name/name.actions';
+import { setProgram } from '../redux/name/name.actions';
 import RestTimer from './subcomponents/RestTimer';
 
 
@@ -24,7 +24,12 @@ const Perform = () => {
   }
   
   const handleFinishClick = () => {
-    dispatch(setTotalTime(timer))
+    dispatch(setProgram({
+      program: programs.title,
+      date: Date.now(),
+      exercises: session,
+      totalTime: timer
+    }))
     navigate('/summary')
   }
   
@@ -34,20 +39,20 @@ const Perform = () => {
     } 
   });
 
+  // should start timer with rest value from redux
+
   return (
     <div className="perform">
       <header className="perform__header">
-        <div className="perform__header__top">
-          <div className="perform__header__top__info">
-            <h1>Legday</h1>
-            <Timer timer={timer} setTimer={setTimer}/>
+        <div className="perform__header__info">
+          <h1>{programs.title}</h1>
+          <Timer timer={timer} setTimer={setTimer}/>
 
-          </div>
-          <RestTimer />
         </div>
+        <RestTimer />
       </header>
       <div ref={el}>
-        {programs && programs.exercises.map(exercise => <PerformArticle setSession={setSession} key={exercise.name} exercise={exercise} />)}
+        {programs && programs.exercises.map(exercise => <PerformArticle program={programs.title} setSession={setSession} key={exercise.name} exercise={exercise} />)}
       </div>
       <div className="perform__buttons">
         <button onClick={handleCancelClick} className="btn btn--cancel">Cancel</button>
