@@ -5,6 +5,12 @@
   margin: 1em;
   border-radius: var(--border-radius-big);
   
+  &__days-since{
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    color: var(--clr-text-dim);
+  }
+
   &__list {
     list-style-position: inside;
   }

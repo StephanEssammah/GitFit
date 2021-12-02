@@ -7,14 +7,17 @@ const userStephan = {
         {
           name: 'Squats',
           sets: 3,
+          rest: 120
         },
         {
           name: 'Leg press',
           sets: 4,
+          rest: 60
         },
         {
           name: 'Leg extensions',
           sets: 5,
+          rest: 30
         }
       ]
     },
@@ -61,7 +64,7 @@ const userStephan = {
       date: 12334557,
       program: 'Legday',
       exercises: {
-        squats: [
+        Squats: [
           {
             weight: 50,
             reps: 10
@@ -82,6 +85,50 @@ const userStephan = {
     { 
       date: 35151,
       program: 'Legday',
+      exercises: {
+        squats: [
+          {
+            weight: 50,
+            reps: 10
+          },
+          {
+            weight: 50,
+            reps: 10
+          }
+        ],
+        legs: [
+          {
+            weight: 23,
+            reps: 645
+          }
+        ]
+      }
+    },
+    { 
+      date: 3953,
+      program: 'Chest',
+      exercises: {
+        squats: [
+          {
+            weight: 50,
+            reps: 10
+          },
+          {
+            weight: 50,
+            reps: 10
+          }
+        ],
+        legs: [
+          {
+            weight: 23,
+            reps: 645
+          }
+        ]
+      }
+    },
+    { 
+      date: 1638348644019,
+      program: 'Back',
       exercises: {
         squats: [
           {

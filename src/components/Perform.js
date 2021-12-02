@@ -52,7 +52,7 @@ const Perform = () => {
         </div>
       </header>
       <div ref={el}>
-        {programs && programs.exercises.map(exercise => <PerformArticle setSession={setSession} key={exercise.name} exercise={exercise} />)}
+        {programs && programs.exercises.map(exercise => <PerformArticle program={programs.title} setSession={setSession} key={exercise.name} exercise={exercise} />)}
       </div>
       <div className="perform__buttons">
         <button onClick={handleCancelClick} className="btn btn--cancel">Cancel</button>

@@ -9,7 +9,7 @@ const Timer = ({ timer, setTimer }) => {
   useEffect(() => {
     const interval = setInterval(() => {  
       setTimer(prevValue => prevValue + 1);
-    }, 1000);
+    }, 10000);
 
     return () => {
       clearInterval(interval);

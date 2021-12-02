@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { displayTime } from './utils/timeConvertion'
+import { addSuffixToNumber } from './utils/addSuffixToNumber'
 
 
 const Summary = () => {
@@ -14,7 +15,7 @@ const Summary = () => {
       <div className="summary__greeting">
         <h1>Great Job!</h1>
         <p>
-          You completed your {sessions.length} workout.
+          You completed your {addSuffixToNumber(sessions.length)} workout.
           <br/>
           You set ... new records!
         </p>
