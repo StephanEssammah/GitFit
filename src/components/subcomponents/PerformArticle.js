@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import PerformSet from './PerformSet';
+import { formatTime } from '../utils/formatTime';
 
 const PerformArticle = ({ exercise, setSession, program }) => {
   const amountOfSets = Array.from({length: exercise.sets});
@@ -30,7 +31,10 @@ const PerformArticle = ({ exercise, setSession, program }) => {
   
   return (
     <article className="perform__mid">
-      <h2 ref={titleRef} className="perform__mid__title">{exercise.name}</h2>
+      <div className="perform__mid__header">
+        <h2 ref={titleRef} className="perform__mid____header__title">{exercise.name}</h2>
+        {exercise.rest && <p className="perform__mid__header__default-time">{formatTime(exercise.rest)}</p>}  
+      </div>
       <article>
         <header className="perform__grid">
           <h3>Set</h3>
@@ -42,7 +46,7 @@ const PerformArticle = ({ exercise, setSession, program }) => {
         {amountOfSets.map((__, index) => (
             <PerformSet
               previous={prevSession?.exercises?.[exercise.name]?.[index]}
-              program={program }
+              rest={exercise.rest}
               key={index}
               index={index}
               weightReps={weightReps}

@@ -39,17 +39,17 @@ const Perform = () => {
     } 
   });
 
+  // should start timer with rest value from redux
+
   return (
     <div className="perform">
       <header className="perform__header">
-        <div className="perform__header__top">
-          <div className="perform__header__top__info">
-            <h1>{programs.title}</h1>
-            <Timer timer={timer} setTimer={setTimer}/>
+        <div className="perform__header__info">
+          <h1>{programs.title}</h1>
+          <Timer timer={timer} setTimer={setTimer}/>
 
-          </div>
-          <RestTimer />
         </div>
+        <RestTimer />
       </header>
       <div ref={el}>
         {programs && programs.exercises.map(exercise => <PerformArticle program={programs.title} setSession={setSession} key={exercise.name} exercise={exercise} />)}

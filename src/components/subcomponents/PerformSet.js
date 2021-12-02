@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleRestTimer } from '../../redux/name/name.actions';
 
-const PerformSet = ({ index, weightReps, handleRepsChange, handleWeightChange, previous }) => {
+const PerformSet = ({ index, weightReps, handleRepsChange, handleWeightChange, previous, rest}) => {
   const [isChecked, setIsChecked] = useState(false)
-
+  const dispatch = useDispatch();
   const previousWeight = previous?.weight;
   const previousReps = previous?.reps;
 
   const handleCheck = () => {
-    if (isChecked)  {
-      setIsChecked(false);
-      return;
-    }
-    if (!previousWeight || !previousReps) {
-      setIsChecked(true);
-      return;
-    }
-    if (weightReps[index].weight === ''){
+    if (isChecked) return setIsChecked(false);
+
+    if (previousWeight && weightReps[index].weight === ''){
       handleWeightChange(previousWeight, index)
     }
-    if (weightReps[index].reps === ''){
+    if (previousReps && weightReps[index].reps === ''){
       handleRepsChange(previousReps, index)
     }
     setIsChecked(true);
+    if (rest) dispatch(toggleRestTimer(['on', rest]));
   }
+
 
   let missingRepsWeights = false 
   if (previousWeight === undefined || previousReps === undefined) missingRepsWeights = true

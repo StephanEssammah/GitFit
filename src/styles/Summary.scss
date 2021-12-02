@@ -1,7 +1,6 @@
 .summary {
   display: flex;
-  height: calc(100vh - var(--margin-top));
-  margin-top: calc(var(--margin-top) * -1);
+  min-height: 100vh;
   flex-direction: column;
   justify-content: center;
 

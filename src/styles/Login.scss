@@ -5,8 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - var(--margin-top));
-    margin-top: calc(var(--margin-top) * -1);
+    min-height: 100vh;
 
     &__header {
       color: var(--clr-text);

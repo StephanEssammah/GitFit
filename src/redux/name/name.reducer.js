@@ -27,6 +27,12 @@ const nameReducer = (state = allUsers.userStephan, { type, payload }) => {
 
       return newState;
       }
+      case 'toggleRestTimer':
+        const on = payload[0]
+        const time = payload[1]
+         return {
+            ...state, restTimer: {status: on, time}
+         };
       default: return state;
   }
 

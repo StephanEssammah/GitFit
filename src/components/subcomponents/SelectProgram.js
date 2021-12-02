@@ -1,18 +1,26 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { displayTime } from '../utils/timeConvertion';
 
-const SelectProgram = ( {program, setModal, setIsModal} ) => {
+const SelectProgram = ({ program, setModal, setIsModal }) => {
   
-  const handleClick = () => {
-    setModal(program);
-    setIsModal(true);
-  }
-
   const sessions = useSelector(state => state.state.sessions);
   const previousProgram = sessions.find(session => session.program === program.title);
   const previousDate = previousProgram?.date;
   const daysSince = Math.floor((Date.now() - previousDate) / 86400000);
   const suffix = daysSince > 1 ? 'days' : 'day';
+  const daysString = `${daysSince} ${suffix} ago`
+
+
+  const matchingSessions = sessions.filter(session => session.program === program.title);
+  const sessionTimes = matchingSessions?.map(session => session.totalTime)
+  const totalTime = sessionTimes?.reduce((prev, curr) => prev + curr , 0);
+  const averageTime = totalTime / sessionTimes.length;
+
+  const handleClick = () => {
+    setModal({ program, averageTime, daysSince: daysString });
+    setIsModal(true);
+  }
   
   return (
     <article className="program" onClick={handleClick}>
@@ -25,7 +33,10 @@ const SelectProgram = ( {program, setModal, setIsModal} ) => {
       <ul className="program__list">
         {program.exercises.map(exercise => <li className="program__list-item" key={exercise.name}>{exercise.name}</li>)}
       </ul>
-      {previousProgram && <p className="program__days-since">{daysSince} {suffix} ago</p>}
+      <div className="program__stats">
+        {previousProgram && <p className="program__stats__days-since">{daysString}</p>}
+        {averageTime > 0 && <p className="program__stats__average-time">~ {displayTime(averageTime)}</p>}
+      </div>
     </article>
   );
 }

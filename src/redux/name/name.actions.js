@@ -18,3 +18,10 @@ export const setProgram = (program) => {
     payload: program
   }
 }
+
+export const toggleRestTimer = (info) => {
+  return {
+    type: 'toggleRestTimer',
+    payload: info
+  }
+}

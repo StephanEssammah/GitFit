@@ -9,7 +9,6 @@ const Select = () => {
   const [isModal, setIsModal] = useState(false);
 
   const programs = useSelector(state => state.state.programs)
-  
 
   return (
     <>
@@ -21,7 +20,7 @@ const Select = () => {
             return <SelectProgram key={program.title} setModal={setModal} setIsModal={setIsModal} program={program} />
           })}
       </div>
-      {isModal && <ConfirmModal program={modal} setIsModal={setIsModal}/>}
+      {isModal && <ConfirmModal passedFromSelect={modal} setIsModal={setIsModal}/>}
     </>
   );
 }

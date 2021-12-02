@@ -6,14 +6,12 @@ import Summary from './components/Summary'
 
 const App = () => {
   return (
-    <div className="page-container">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Select />} />
         <Route path="/perform" element={<Perform />} />
         <Route path="/summary" element={<Summary />} />
       </Routes>
-    </div>
   );
 }
 

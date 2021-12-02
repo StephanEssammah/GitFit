@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { formatTime } from '../utils/formatTime';
 
 const RestTimer = () => {
   const [restTimer, setRestTimer] = useState('Timer');
   const [counter, setCounter] = useState(null);
   const [intervalId, setIntervalId] = useState(null);
 
+  const stateRestTimer = useSelector(state => state.state.restTimer)
+  
   const startTimer = () => {
     if(counter) return;
     const newIntervalId = setInterval(() => {
@@ -31,7 +35,6 @@ const RestTimer = () => {
       startTimer();
       return prevValue - 15;
     });
-    
   }
 
   const handleIncrease = () => {
@@ -41,16 +44,23 @@ const RestTimer = () => {
 
   useEffect(() => {
     if (counter !== null) {
-      const seconds = counter;
-      const format = val => `0${Math.floor(val)}`.slice(-2);
-      const minutes = (seconds % 3600) / 60;
-      const time = [minutes, seconds % 60].map(format).join(':');
+      const time = formatTime(counter)
       setRestTimer(time)
       if (counter === 0){
-          resetRestTimer()
+        resetRestTimer()
       }
     }
   }, [counter])
+
+  useEffect(() => {
+    if (stateRestTimer) {
+      if (stateRestTimer.status === 'on') {
+        console.log(stateRestTimer.time)
+        setCounter(stateRestTimer.time)
+        startTimer()
+      }
+    }
+  }, [stateRestTimer])
  
 
   return (

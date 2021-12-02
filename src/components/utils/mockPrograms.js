@@ -17,7 +17,6 @@ const userStephan = {
         {
           name: 'Leg extensions',
           sets: 5,
-          rest: 30
         }
       ]
     },
@@ -61,6 +60,7 @@ const userStephan = {
   // SESSIONS
   sessions: [
     { 
+      totalTime: 3600,
       date: 12334557,
       program: 'Legday',
       exercises: {
@@ -83,6 +83,7 @@ const userStephan = {
       }
     },
     { 
+      totalTime: 7200,
       date: 35151,
       program: 'Legday',
       exercises: {
