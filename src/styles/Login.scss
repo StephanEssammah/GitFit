@@ -13,19 +13,19 @@
       font-size: 5em;
   }
 
-    &__inputs {
+    &__form {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       
-      &__name {
-        margin: 2em 0em;
+      &__input {
+        margin: 0.8em 0em;
         position: relative;
         & input {
           color: var(--clr-text);
           font-size: 1.3em;
-          padding: .5em 0em;
+          padding: .4em 0em;
           margin: 0;
           background: none;
           border: none;
@@ -48,6 +48,7 @@
         }
         
         & > span {
+          pointer-events: none;
           transform-origin: left;
           color: var(--clr-text-dim);
           position: absolute;
@@ -62,8 +63,8 @@
     }
 
     &__button{
+      margin-top: 1.5em;
       width: 100%;
-      
     }
   }
 }
