@@ -50,12 +50,14 @@ const RestTimer = () => {
         resetRestTimer()
       }
     }
+    return () => {
+      clearInterval(intervalId)
+    }
   }, [counter])
 
   useEffect(() => {
     if (stateRestTimer) {
       if (stateRestTimer.status === 'on') {
-        console.log(stateRestTimer.time)
         setCounter(stateRestTimer.time)
         startTimer()
       }

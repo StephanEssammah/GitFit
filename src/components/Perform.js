@@ -17,7 +17,7 @@ const Perform = () => {
   const navigate = useNavigate();
   const el = useRef();
 
-  const programs = location.state || null;
+  const programs = location.state || navigate('/');
 
   const handleCancelClick = () => {
     navigate('/')
@@ -39,13 +39,11 @@ const Perform = () => {
     } 
   });
 
-  // should start timer with rest value from redux
-
   return (
     <div className="perform">
       <header className="perform__header">
         <div className="perform__header__info">
-          <h1>{programs.title}</h1>
+          {programs && <h1>{programs.title}</h1> }
           <Timer timer={timer} setTimer={setTimer}/>
 
         </div>
