@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import PerformArticle from './subcomponents/PerformArticle';
 import Timer from './subcomponents/Timer';
-import { setProgram } from '../redux/name/name.actions';
+import { setProgram } from '../redux/name/user.actions';
 import RestTimer from './subcomponents/RestTimer';
 
 

@@ -1,7 +1,8 @@
 import { combineReducers, createStore } from 'redux';
-import nameReducer from './name/name.reducer'
+import userReducer from './name/user.reducer'
+import newProgramReducer from './name/newProgram.reducer'
 
-const rootReducer = combineReducers({ state: nameReducer })
+const rootReducer = combineReducers({ user: userReducer, newProgram: newProgramReducer })
 const store = createStore(rootReducer)
 
 export default store;

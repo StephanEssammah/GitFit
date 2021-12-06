@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleRestTimer } from '../../redux/name/name.actions';
+import { toggleRestTimer } from '../../redux/name/user.actions';
 
 const PerformSet = ({ index, weightReps, handleRepsChange, handleWeightChange, previous, rest}) => {
   const [isChecked, setIsChecked] = useState(false)

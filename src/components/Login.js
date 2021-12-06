@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { setData } from '../redux/name/name.actions';
-import { allUsers } from './utils/mockPrograms';
+import { setData } from '../redux/name/user.actions';
 
 const Login = () => {
   const [ username, setUsername ] = useState('');
@@ -28,10 +27,6 @@ const Login = () => {
 
     const data = await response.json()
     dispatch(setData(data));
-    
-    // console.log('response', JSON.parse(response))
-    // if (username === 'Stephan') dispatch(setData(allUsers.userStephan))
-    // if (username === 'Carl') dispatch(setData(allUsers.userCarl))
     navigate('/')
   }
 

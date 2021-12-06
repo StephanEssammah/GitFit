@@ -25,3 +25,17 @@ export const toggleRestTimer = (info) => {
     payload: info
   }
 }
+
+export const exerciseAdd = (exercise) => {
+  return {
+    type: 'exerciseAdd',
+    payload: exercise
+  }
+}
+
+export const exerciseRemove = (exercise) => {
+  return {
+    type: 'exerciseRemove',
+    payload: exercise
+  }
+}

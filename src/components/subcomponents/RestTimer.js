@@ -7,7 +7,7 @@ const RestTimer = () => {
   const [counter, setCounter] = useState(null);
   const [intervalId, setIntervalId] = useState(null);
 
-  const stateRestTimer = useSelector(state => state.state.restTimer)
+  const stateRestTimer = useSelector(state => state.user.restTimer)
   
   const startTimer = () => {
     if(counter) return;
@@ -54,6 +54,8 @@ const RestTimer = () => {
       clearInterval(intervalId)
     }
   }, [counter])
+
+  useEffect(() => () => clearInterval(intervalId), [intervalId])
 
   useEffect(() => {
     if (stateRestTimer) {
