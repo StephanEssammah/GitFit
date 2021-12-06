@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router';
 import Exercise from './subcomponents/Exercise'
 import { useSelector, useDispatch } from 'react-redux'
 import { setTitle, reset } from '../redux/name/newProgram.actions';
+import CreateExercise from './CreateExercise';
 
 const AddExercises = () => {
+  const [isModal, setIsModal] = useState(false);
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -26,7 +28,8 @@ const AddExercises = () => {
 
   const createExercise = () => {
     dispatch(setTitle(programTitle))
-    navigate('/create-program/create-exercise')
+    // navigate('/create-program/create-exercise')
+    setIsModal(true);
   }
 
   return (
@@ -38,15 +41,16 @@ const AddExercises = () => {
         placeholder="Program name"
       />
       <ul className="perform__mid">
-        {exercisesList.map((exercise, index) => (
+        {exercisesList && exercisesList.map((exercise, index) => (
           <Exercise key={index} exerciseList={exerciseList} setExerciseList={setExerciseList} exercise={exercise}/>
         ))}
         <button onClick={createExercise}>Create new exercise</button>
-        </ul>
-    <div className="perform__buttons">
+      </ul>
+      <div className="perform__buttons">
         <button onClick={handleCancelClick} className="btn btn--cancel">Cancel</button>
         <button onClick={handleContinueClick} className="btn btn--action">Continue</button>
-    </div>
+      </div>
+    {isModal && <CreateExercise setIsModal={setIsModal} />}
     </>
   )
 }
