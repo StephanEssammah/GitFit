@@ -26,7 +26,7 @@ const PerformArticle = ({ exercise, setSession, program }) => {
     setSession(prevState => ({...prevState, [exerciseName]: weightReps}) )
   }
 
-  const sessions = useSelector(state => state.state.sessions);
+  const sessions = useSelector(state => state.user.sessions);
   const prevSession = sessions.find(session => session.program === program)
   
   return (

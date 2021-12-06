@@ -10,7 +10,7 @@ const calculateTotalVolume = session => {
   return volume;
 }
 
-const nameReducer = (state = allUsers.userStephan, { type, payload }) => {
+const userReducer = (state = allUsers.userStephan, { type, payload }) => {
   switch (type) {
       case 'setData': {
          return payload
@@ -38,4 +38,4 @@ const nameReducer = (state = allUsers.userStephan, { type, payload }) => {
 
 };
 
-export default nameReducer;
+export default userReducer;

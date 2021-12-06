@@ -4,7 +4,7 @@ import { displayTime } from '../utils/timeConvertion';
 
 const SelectProgram = ({ program, setModal, setIsModal }) => {
   
-  const sessions = useSelector(state => state.state.sessions);
+  const sessions = useSelector(state => state.user.sessions);
   const previousProgram = sessions.find(session => session.program === program.title);
   const previousDate = previousProgram?.date;
   const daysSince = Math.floor((Date.now() - previousDate) / 86400000);

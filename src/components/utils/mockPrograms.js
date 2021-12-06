@@ -1,5 +1,6 @@
 const userStephan = {
   user: 'stephan',
+  newProgram: [],
   programs: [
     {
       title: 'Legday',
