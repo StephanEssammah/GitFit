@@ -50,6 +50,9 @@ const RestTimer = () => {
         resetRestTimer()
       }
     }
+    return () => {
+      clearInterval(intervalId)
+    }
   }, [counter])
 
   useEffect(() => () => clearInterval(intervalId), [intervalId])

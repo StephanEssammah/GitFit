@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setData } from '../redux/name/user.actions';
 import { fetchData } from './utils/fetchData';
 
-
 const Select = () => {
   const [modal, setModal] = useState({});
   const [isModal, setIsModal] = useState(false);
@@ -24,7 +23,6 @@ const Select = () => {
       dispatch(setData(data));
     }
     if (activeUser) fetchUserData()
-
   }, [dispatch, navigate])
 
 
