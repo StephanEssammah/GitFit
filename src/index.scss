@@ -57,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--clr-action);
   padding: 0.7em 1em;
   font-size: 1rem;
+  cursor: pointer;
 
   &--action {
     background-color: var(--clr-btn-act);
@@ -70,6 +71,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--clr-btn-cancel);
     color: var(--clr-bg);
   }
+
+  &--delete {
+    color: red;
+  }
 }
 
 .btn-options {
@@ -80,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 4.5em;
   height: 2em;
   color: var(--clr-text-dim);
-  cursor: help;
+  cursor: pointer;
 
   & > span,
   & > span::after,
@@ -123,6 +128,8 @@ a {
 @import './styles/Select.scss';
 @import './styles/SelectProgram.scss';
 @import './styles/ConfirmModal.scss';
+@import './styles/AddExercises.scss';
+@import './styles/ModifyProgram.scss';
 @import './styles/Perform.scss';
 @import './styles/RestTimer.scss';
 @import './styles/Summary.scss';

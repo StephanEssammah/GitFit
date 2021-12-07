@@ -21,12 +21,12 @@ const Exercise = ({exercise}) => {
   }
 
   return (
-    <li className={`perform__grid ${isChecked ? 'done' : ''}`}>
-      <p>{exercise.name}</p>
+    <li className={`add-exercise__grid ${isChecked ? 'done' : ''}`}>
+      <p className="add-exercise__grid__name">{exercise.name}</p>
       <input 
         size="1" 
         onChange={handleCheck} 
-        className="perform__mid__input-checkbox" 
+        className="add-exercise__input-checkbox" 
         type="checkbox"
         checked={isChecked}
       />

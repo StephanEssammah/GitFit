@@ -57,6 +57,7 @@ const Login = () => {
             <span>Password</span>
           </label>
           <button className="btn btn--action login__form__button">LOGIN</button>
+          <p>Create Account</p>
         </form>
     </div>
   );

@@ -28,29 +28,32 @@ const AddExercises = () => {
 
   const createExercise = () => {
     dispatch(setTitle(programTitle))
-    // navigate('/create-program/create-exercise')
     setIsModal(true);
   }
 
   return (
     <>
-      <input 
-        type="text"
-        value={programTitle}
-        onChange={e => setProgramTitle(e.target.value)}
-        placeholder="Program name"
-      />
-      <ul className="perform__mid">
-        {exercisesList && exercisesList.map((exercise, index) => (
-          <Exercise key={index} exerciseList={exerciseList} setExerciseList={setExerciseList} exercise={exercise}/>
-        ))}
-        <button onClick={createExercise}>Create new exercise</button>
-      </ul>
-      <div className="perform__buttons">
+      <div className="add-exercise">
+        <input
+          className="add-exercise__title"
+          type="text"
+          value={programTitle}
+          onChange={e => setProgramTitle(e.target.value)}
+          placeholder="Program name"
+        />
+        <ul className="add-exercise__list">
+          {exercisesList && exercisesList.map((exercise, index) => (
+            <Exercise key={index} exerciseList={exerciseList} setExerciseList={setExerciseList} exercise={exercise}/>
+          ))}
+          <button className="add-exercise__create btn" onClick={createExercise}>Create new exercise</button>
+        </ul>
+        
+        {isModal && <CreateExercise setIsModal={setIsModal} />}
+      </div>
+      <div className="add-exercise__buttons">
         <button onClick={handleCancelClick} className="btn btn--cancel">Cancel</button>
         <button onClick={handleContinueClick} className="btn btn--action">Continue</button>
       </div>
-    {isModal && <CreateExercise setIsModal={setIsModal} />}
     </>
   )
 }

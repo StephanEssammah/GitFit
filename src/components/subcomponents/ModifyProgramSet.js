@@ -1,22 +1,15 @@
 const ModifyProgramSet = ({ index }) => {
   return (
-    <div className='perform__grid'>
+    <div className='modify-item__grid'>
       <p>{index + 1}</p>
       <p>---</p>
-      <input
-          size="1"
-          className="inputOne perform__mid__input"
-          type="number"     
-      />
-      <input
-          size="1"
-          className="inputTwo perform__mid__input"
-          type="number"
-      />
+      <p>---</p>
+      <p>---</p>
       <input 
           size="1" 
-          className="perform__mid__input-checkbox" 
+          className="modify-item__input-checkbox" 
           type="checkbox"
+          disabled
       />
     </div>
   )

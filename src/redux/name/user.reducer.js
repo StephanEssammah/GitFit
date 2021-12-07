@@ -1,5 +1,3 @@
-import { allUsers } from '../../components/utils/mockPrograms'
-
 const calculateTotalVolume = session => {
   const exercises = Object.keys(session.exercises)
   let volume = 0;
@@ -10,7 +8,14 @@ const calculateTotalVolume = session => {
   return volume;
 }
 
-const userReducer = (state = allUsers.userStephan, { type, payload }) => {
+const initialState = {
+  user: '',
+  newProgram: [],
+  programs: [],
+  sessions: []
+}
+
+const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
       case 'setData': {
          return payload

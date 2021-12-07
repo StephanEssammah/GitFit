@@ -5,9 +5,9 @@ import { addSuffixToNumber } from './utils/addSuffixToNumber'
 
 
 const Summary = () => {
-
   const sessions = useSelector(state => state.user.sessions)
-  const { totalTime, exercises, volume } = sessions[0]
+  const length = sessions.length
+  const { totalTime, exercises, volume } = sessions[length - 1]
   const exercisesKeys = Object.keys(exercises)
   
   return (

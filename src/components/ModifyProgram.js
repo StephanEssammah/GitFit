@@ -1,58 +1,78 @@
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { reset } from '../redux/name/newProgram.actions';
+import { reset, setEditProgram, setTitle } from '../redux/name/newProgram.actions';
 import ModifyProgramExercise from './subcomponents/ModifyProgramExercise';
 
-
-
 const ModifyProgram = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const newProgram = useSelector(state => state.newProgram)
- 
 
   const handleCancelClick = () => {
     dispatch(reset())
     navigate('/')
   }
   
-  const handleFinishClick = () => {
-    // SEND EXERCISELIST TO BACKEND
-    /*
-    await fetch('http://localhost:8080/user/addNewProgram', {
-      method: 'POST',
+  const handleFinishClick = async () => {
+    const activeUser = document.cookie.match(/=(.+)/);
+    const finishedProgram = newProgram
+
+    if (newProgram.programID) {
+      await fetch('http://localhost:8080/user/updateProgram', {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       credentials: 'include',
-      body: JSON.stringify(newProgram)
+      body: JSON.stringify({
+        program: finishedProgram,
+        user: activeUser[1]
+      })
     })
-    */
-    console.log(newProgram)
+    } else {
+      await fetch('http://localhost:8080/user/addProgram', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          program: finishedProgram,
+          user: activeUser[1]
+        })
+      })
+    }
+    
     dispatch(reset())
     navigate('/')
   }
   
   useEffect(() => {
-    if(newProgram === null) {
+    if (newProgram === null) {
       navigate('/')
-    }    
+    }
+
+    if (location.state) {
+      dispatch(setEditProgram(location.state))
+    }
+        
   }, []);
 
+
   return (
-    <div className="perform">
-      <header className="perform__header">
-        <div className="perform__header__info">
-          {newProgram && <h1>{newProgram.title}</h1> }
-        </div>
+    <div className="modify">
+      <header className="modify__header">
+        <input className="modify__title" type="text" onChange={e => dispatch(setTitle(e.target.value))} value={newProgram.title} /> 
       </header>
       <div>
         {newProgram && newProgram.exercises.map(exercise => <ModifyProgramExercise key={exercise.name} exercise={exercise} />)}
       </div>
-      <button onClick={() => navigate('/create-program/add-exercises')}>Add exercises</button>
-      <div className="perform__buttons">
+      <button className="btn modify__btn__add-exercises" onClick={() => navigate('/create-program/add-exercises')}>Add exercises</button>
+      <div className="modify__button__container">
         <button onClick={handleCancelClick} className="btn btn--cancel">Cancel</button>
         <button onClick={handleFinishClick} className="btn btn--action">Save Program</button>
       </div>

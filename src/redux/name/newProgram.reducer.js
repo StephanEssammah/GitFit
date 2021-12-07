@@ -30,6 +30,12 @@ const newProgramReducer = (state = {title: '', exercises: []}, { type, payload }
         targetExercise.rest = payload.time
         return {...state, exercises }
       }
+      case 'setEditProgram': {
+        console.log('state:', state)
+        console.log('payload:', payload.program)
+
+        return {...state, ...payload.program}
+      }
       default: return state;
   }
 

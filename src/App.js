@@ -7,7 +7,6 @@ import Select from './components/Select';
 import Summary from './components/Summary'
 import AddExercises from './components/AddExercises';
 import ModifyProgram from './components/ModifyProgram';
-import CreateExercise from './components/CreateExercise';
 
 const App = () => {
   const navigate = useNavigate()
@@ -26,8 +25,8 @@ const App = () => {
       <Route path="/summary" element={<Summary />} />
 
       <Route path="/create-program/add-exercises" element={<AddExercises />} />
-      <Route path="/create-program/create-exercise" element={<CreateExercise />} />
       <Route path="/create-program/modify-program" element={<ModifyProgram />} />
+      <Route path="/edit-program" element={<ModifyProgram />} />
     </Routes>
   );
 }

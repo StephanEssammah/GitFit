@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import PerformArticle from './subcomponents/PerformArticle';
 import Timer from './subcomponents/Timer';
-import { setProgram } from '../redux/name/user.actions';
+import { setData } from '../redux/name/user.actions';
 import RestTimer from './subcomponents/RestTimer';
 
 
@@ -23,18 +23,32 @@ const Perform = () => {
     navigate('/')
   }
   
-  const handleFinishClick = () => {
-    dispatch(setProgram({
+  const handleFinishClick = async () => {
+    const newSession = {
       program: programs.title,
       date: Date.now(),
       exercises: session,
       totalTime: timer
-    }))
+    }
+
+    const activeUser = document.cookie.match(/=(.+)/);
+    const response = await fetch('http://localhost:8080/user/addSession', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          session: newSession,
+          user: activeUser[1]
+        })
+      })
+    dispatch(setData(response))
     navigate('/summary')
   }
   
   useEffect(() => {
-    if(programs === null) {
+    if (programs === null) {
       navigate('/')
     } 
   });

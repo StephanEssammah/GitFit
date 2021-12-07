@@ -45,3 +45,10 @@ export const setRestTime = (exercise, time) => {
     payload: {exercise, time}
   }
 }
+
+export const setEditProgram = (program) => {
+  return {
+    type: 'setEditProgram',
+    payload: program
+  }
+}
