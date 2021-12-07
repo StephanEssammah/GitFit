@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import { displayTime } from './utils/timeConvertion'
 
@@ -17,14 +16,17 @@ const ConfirmModal = ({ passedFromSelect, setIsModal }) => {
     setIsModal(false);
   }
 
+  const handleEdit = e => {
+    e.stopPropagation();
+    // navigate('/modify-program');
+  }
+
   return (
     <div className="modal" onClick={() => setIsModal(false)}>
       <article className="program" onClick={e => e.stopPropagation()}>
         <header className="program__header">
           <h2 className="program__header__title">{program.title}</h2>
-          <Link to="/edit-program">
-            <button className="btn-options program__header__edit-button"><span/></button>
-          </Link>
+          <button onClick={handleEdit} className="btn-options program__header__edit-button">Edit</button>
         </header>
         <ul className="program__list">
           {program.exercises.map(exercise => <li className="program__list-item" key={exercise.name}>{`${exercise.sets} x ${exercise.name}`}</li>)}

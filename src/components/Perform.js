@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import PerformArticle from './subcomponents/PerformArticle';
 import Timer from './subcomponents/Timer';
-import { setProgram } from '../redux/name/name.actions';
+import { setData } from '../redux/name/user.actions';
 import RestTimer from './subcomponents/RestTimer';
 
 
@@ -17,35 +17,47 @@ const Perform = () => {
   const navigate = useNavigate();
   const el = useRef();
 
-  const programs = location.state || null;
+  const programs = location.state || navigate('/');
 
   const handleCancelClick = () => {
     navigate('/')
   }
   
-  const handleFinishClick = () => {
-    dispatch(setProgram({
+  const handleFinishClick = async () => {
+    const newSession = {
       program: programs.title,
       date: Date.now(),
       exercises: session,
       totalTime: timer
-    }))
+    }
+
+    const activeUser = document.cookie.match(/=(.+)/);
+    const response = await fetch('http://localhost:8080/user/addSession', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          session: newSession,
+          user: activeUser[1]
+        })
+      })
+    dispatch(setData(response))
     navigate('/summary')
   }
   
   useEffect(() => {
-    if(programs === null) {
+    if (programs === null) {
       navigate('/')
     } 
   });
-
-  // should start timer with rest value from redux
 
   return (
     <div className="perform">
       <header className="perform__header">
         <div className="perform__header__info">
-          <h1>{programs.title}</h1>
+          {programs && <h1>{programs.title}</h1> }
           <Timer timer={timer} setTimer={setTimer}/>
 
         </div>
