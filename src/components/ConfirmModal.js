@@ -3,7 +3,7 @@ import { displayTime } from './utils/timeConvertion'
 
 const ConfirmModal = ({ passedFromSelect, setIsModal }) => {
 
-  const { program, averageTime, daysSince } = passedFromSelect
+  const { program, previousProgram, averageTime, daysSince } = passedFromSelect
   const navigate = useNavigate();
   
   const handleStartClick = e => {
@@ -18,6 +18,7 @@ const ConfirmModal = ({ passedFromSelect, setIsModal }) => {
 
   const handleEdit = e => {
     e.stopPropagation();
+    navigate('/edit-program', {state: {program}})
     // navigate('/modify-program');
   }
 
@@ -32,7 +33,7 @@ const ConfirmModal = ({ passedFromSelect, setIsModal }) => {
           {program.exercises.map(exercise => <li className="program__list-item" key={exercise.name}>{`${exercise.sets} x ${exercise.name}`}</li>)}
         </ul>
         <div className="program__stats">
-          {daysSince && <p className="program__stats__days-since">{daysSince}</p>}
+          {previousProgram && <p className="program__stats__days-since">{daysSince}</p>}
           {averageTime > 0 && <p className="program__stats__average-time">~ {displayTime(averageTime)}</p>}
         </div>
         <footer className="confirm__footer">

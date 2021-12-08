@@ -1,0 +1,56 @@
+.nav-bar {
+  background-color: var(--clr-bg-cont);
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 80px;
+  padding: .4em;
+  max-width: var(--max-width);
+  box-shadow: 0 -3px 6px var(--clr-overlay);
+
+  & button {
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  & > * {
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    
+    &::before {
+      cursor: pointer;
+      content: '';
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      width: 35px;
+      height: 35px;
+      transform: translateX(-50%);
+      display: block;
+      mask-size: contain;
+      background-color: var(--clr-text);
+      mask-repeat: no-repeat;
+    }
+  }
+
+  &__history::before {
+    mask-image: url('../icons/historyIcon.svg');
+    transform: translateX(-40%);
+  }
+  &__select::before {
+    mask-image: url('../icons/add_icon.svg');
+  }
+  &__logout::before {
+    transform: translateX(-35%);
+    mask-image: url('../icons/logoutIcon.svg');
+  }
+}

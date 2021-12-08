@@ -68,6 +68,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
+.nav-margin {
+  padding-bottom: calc(1rem + 80px);
+}
+
 .btn {
   color: var(--clr-text);
   background: none;
@@ -139,11 +143,12 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: var(--clr-text);
-  text-decoration: none;
 }
 
 
 @import './styles/Login.scss';
+@import './styles/LogoutModal.scss';
+@import './styles/NavBar.scss';
 @import './styles/Select.scss';
 @import './styles/SelectProgram.scss';
 @import './styles/ConfirmModal.scss';
@@ -153,3 +158,4 @@ a {
 @import './styles/RestTimer.scss';
 @import './styles/Summary.scss';
 @import './styles/AddTemplate.scss';
+@import './styles/History.scss';

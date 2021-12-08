@@ -5,7 +5,7 @@ import ConfirmModal from './ConfirmModal';
 import { useSelector, useDispatch } from 'react-redux'
 import { setData } from '../redux/name/user.actions';
 import { fetchData } from './utils/fetchData';
-
+import NavBar from './NavBar';
 
 const Select = () => {
   const [modal, setModal] = useState({});
@@ -30,12 +30,13 @@ const Select = () => {
 
   return (
     <>
-      <div className="select">
+      <div className="select nav-margin">
           <button onClick={() => navigate('/create-program/add-exercises')} className="select__btn-add-template">create program</button>
           {programs.map(program => {
             return <SelectProgram key={program.title} setModal={setModal} setIsModal={setIsModal} program={program} />
           })}
       </div>
+      <NavBar />
       {isModal && <ConfirmModal passedFromSelect={modal} setIsModal={setIsModal}/>}
     </>
   );

@@ -1,15 +1,11 @@
-.summary {
+.history {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   justify-content: center;
 
-  &__greeting {
-    text-align: center;
-    & > p {
-      font-size: 1.25em;
-      font-weight: 200;
-    }
+  &__main-heading {
+    margin-top: 1em;
   }
   
   &__info {
@@ -17,6 +13,21 @@
     padding: var(--padding-main);
     background-color: var(--clr-bg-cont);
     border-radius: var(--border-radius-big);
+
+    &__col__exercise {
+      margin-top: 0.75em;
+    }
+
+    &__col__sets {
+      list-style: circle;
+      margin-left: 1.2em;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     &__exercises {
       margin-top: 0.5em;
@@ -30,10 +41,6 @@
       justify-content: space-between;
       color: var(--clr-text-dim);
     }
-  }
-
-  &__button {
-    margin-top: 2em;
   }
 
 }

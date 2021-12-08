@@ -18,7 +18,7 @@ const SelectProgram = ({ program, setModal, setIsModal }) => {
   const averageTime = totalTime / sessionTimes.length;
 
   const handleClick = () => {
-    setModal({ program, averageTime, daysSince: daysString });
+    setModal({ program, previousProgram, averageTime, daysSince: daysString });
     setIsModal(true);
   }
   

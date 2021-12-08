@@ -1,16 +1,16 @@
 import { useRef, useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PerformArticle from './subcomponents/PerformArticle';
 import Timer from './subcomponents/Timer';
 import { setData } from '../redux/name/user.actions';
 import RestTimer from './subcomponents/RestTimer';
-
+import { calculateTotalVolume } from './utils/calculateTotalVolume';
 
 const Perform = () => {
-  const [timer, setTimer] = useState(0);
   const [session, setSession] = useState([]);
+  const totalTime = useSelector(state => state.user.totalTime);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -24,11 +24,14 @@ const Perform = () => {
   }
   
   const handleFinishClick = async () => {
+    const volume = calculateTotalVolume(session)
+
     const newSession = {
       program: programs.title,
       date: Date.now(),
       exercises: session,
-      totalTime: timer
+      totalTime: totalTime,
+      volume: volume
     }
 
     const activeUser = document.cookie.match(/=(.+)/);
@@ -43,7 +46,9 @@ const Perform = () => {
           user: activeUser[1]
         })
       })
-    dispatch(setData(response))
+
+    const data = await response.json();
+    dispatch(setData(data))
     navigate('/summary')
   }
   
@@ -58,8 +63,7 @@ const Perform = () => {
       <header className="perform__header">
         <div className="perform__header__info">
           {programs && <h1>{programs.title}</h1> }
-          <Timer timer={timer} setTimer={setTimer}/>
-
+          <Timer />
         </div>
         <RestTimer />
       </header>

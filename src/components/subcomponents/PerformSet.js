@@ -23,6 +23,7 @@ const PerformSet = ({ index, weightReps, handleRepsChange, handleWeightChange, p
 
 
   let missingRepsWeights = false 
+  if (previousWeight === '' || previousReps === '') missingRepsWeights = true
   if (previousWeight === undefined || previousReps === undefined) missingRepsWeights = true
 
   return (
