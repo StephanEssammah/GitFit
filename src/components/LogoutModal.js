@@ -15,7 +15,7 @@ const LogoutModal = ({ setIsModal }) => {
         <h1 className="logout__title">Confirm logout?</h1>
         <div className="logout__buttons">
           <button onClick={() => setIsModal(false)} className="btn btn--cancel logout__buttons__cancel">Cancel</button>
-          <button onClick={() => handleLogout()} className="btn btn--action logout__buttons__logout">Confirm</button>
+          <button onClick={() => handleLogout()} className="btn btn--delete logout__buttons__logout">Confirm</button>
         </div>
       </div>
     </div>
