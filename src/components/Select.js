@@ -24,7 +24,6 @@ const Select = () => {
       dispatch(setData(data));
     }
     if (activeUser) fetchUserData()
-
   }, [dispatch, navigate])
 
 
