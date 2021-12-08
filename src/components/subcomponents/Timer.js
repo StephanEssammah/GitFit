@@ -1,6 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTotalTime } from '../../redux/name/user.actions';
 
-const Timer = ({ timer, setTimer }) => {
+const Timer = () => {
+  const dispatch = useDispatch()
+  const timer = useSelector(state => state.user.totalTime);
+  
   const format = val => `0${Math.floor(val)}`.slice(-2);
   const hours = timer / 3600;
   const minutes = (timer % 3600) / 60;
@@ -8,13 +13,13 @@ const Timer = ({ timer, setTimer }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {  
-      setTimer(prevValue => prevValue + 1);
-    }, 10000);
+      dispatch(setTotalTime((timer + 1)));
+    }, 1000);
 
     return () => {
       clearInterval(interval);
     }
-  }, [setTimer]);
+  }, [dispatch, timer]);
 
   return (
     <p>{time}</p>

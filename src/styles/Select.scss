@@ -8,7 +8,7 @@
     background-color: var(--clr-bg-cont);
     border-style: none;
     border-radius: var(--border-radius-small);
-    color: white;
+    color: var(--clr-text);
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
@@ -16,7 +16,13 @@
     cursor: pointer;
 
     &::before {
-      content: '+';
+      content: '';
+      mask-image: url('../icons/add_icon.svg');
+      mask-size: contain;
+      background-color: var(--clr-text);
+      width: 1.5em;
+      height: 1.5em;
+      line-height: 0;
     }
   }
 }

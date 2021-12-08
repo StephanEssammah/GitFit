@@ -36,6 +36,25 @@
   --font-text: 'Noto Sans', sans-serif;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --clr-text: hsla(0, 0%, 0%, 1);
+    // --clr-text-dim: hsla(232, 15%, 58%, 1);
+    --clr-text-dim: hsla(0, 0%, 0%, .4);
+    --clr-placeholder: hsla(0, 0%, 0%, .4);
+    --clr-bg: hsla(0, 0%, 82%, 1);
+    --clr-bg-opacity: hsla(0, 0%, 82%, .9);
+    --clr-bg-cont: hsla(0, 0%, 100%, 1);
+    --clr-overlay: hsla(0, 0%, 0%, 0.62);
+    --clr-action: hsla(69, 93%, 61%, 1);
+    --clr-action-hover: hsla(69, 93%, 57%, 1); // lightness down(-) 4%, s orig s -5%
+    --clr-btn-act: var(--clr-action);
+    --clr-btn-cancel: hsla(0, 0%, 67%, 1);
+    --clr-set-done: hsla(104, 100%, 50%, 0.27);
+    --clr-checkbox: hsla(231, 23%, 76%, .7);
+  }
+}
+
 body {
   background-color: var(--clr-bg);
   color: var(--clr-text);
@@ -47,6 +66,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+}
+
+.nav-margin {
+  padding-bottom: calc(1rem + 80px);
 }
 
 .btn {
@@ -120,11 +143,12 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: var(--clr-text);
-  text-decoration: none;
 }
 
 
 @import './styles/Login.scss';
+@import './styles/LogoutModal.scss';
+@import './styles/NavBar.scss';
 @import './styles/Select.scss';
 @import './styles/SelectProgram.scss';
 @import './styles/ConfirmModal.scss';
@@ -134,3 +158,4 @@ a {
 @import './styles/RestTimer.scss';
 @import './styles/Summary.scss';
 @import './styles/AddTemplate.scss';
+@import './styles/History.scss';

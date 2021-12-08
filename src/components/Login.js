@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setData } from '../redux/name/user.actions';
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [ username, setUsername ] = useState('');
@@ -9,8 +10,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
- 
   const handleSubmit = async e => {
     e.preventDefault();
     const response = await fetch('http://localhost:8080/user/login', {
@@ -43,7 +42,7 @@ const Login = () => {
               type="text"
               placeholder="username"
               autoComplete="off" />
-            <span>Name</span>
+            <span>Username</span>
           </label>
           <label className="login__form__input" htmlFor="password">
             <input
@@ -57,8 +56,8 @@ const Login = () => {
             <span>Password</span>
           </label>
           <button className="btn btn--action login__form__button">LOGIN</button>
-          <p>Create Account</p>
         </form>
+        <Link to='/signup' className="login__create-account">Create Account</Link>
     </div>
   );
 }
