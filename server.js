@@ -8,12 +8,14 @@ const { createNewUser } = require('./newUser');
 const path = require('path');
 
 const port = process.env.PORT || 8080;
-// app.use(cors({origin: 'http://localhost:3000', credentials: true}))
+app.use(cors({origin: 'http://localhost:3000', credentials: true}))
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
 const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@salt1.r85z6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 const client = new MongoClient(uri)
+
+
 
 // USER LOGIN // 
 app.post('/user/login', async (req, res) => {
