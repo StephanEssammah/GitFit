@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { reset, setEditProgram, setTitle } from '../redux/name/newProgram.actions';
 import ModifyProgramExercise from './subcomponents/ModifyProgramExercise';
 
+const API = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/'
+
 const ModifyProgram = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const ModifyProgram = () => {
     const finishedProgram = newProgram
 
     if (newProgram.programID) {
-      await fetch('http://localhost:8080/user/updateProgram', {
+      await fetch(`${API}user/updateProgram`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -34,7 +36,7 @@ const ModifyProgram = () => {
       })
     })
     } else {
-      await fetch('http://localhost:8080/user/addProgram', {
+      await fetch(`${API}user/addProgram`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

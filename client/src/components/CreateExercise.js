@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setData } from '../redux/name/user.actions';
 
+const API = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/'
+
 function CreateExercise({ setIsModal }) {
   const dispatch = useDispatch()
   const [name, setName] = useState('')
@@ -23,7 +25,7 @@ function CreateExercise({ setIsModal }) {
       setName('');
       return;
     }
-    const response = await fetch('http://localhost:8080/user/addExercise', {
+    const response = await fetch(`${API}user/addExercise`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router';
 
+const API = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/'
+
+
 const Signup = () => {
   const [userExists, setUserExists] = useState(false)
   const [passwordMismatch, setPasswordMismatch] = useState(false)
@@ -22,7 +25,7 @@ const Signup = () => {
       return;
     }
 
-    const response = await fetch('http://localhost:8080/user/signup', {
+    const response = await fetch(`${API}user/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

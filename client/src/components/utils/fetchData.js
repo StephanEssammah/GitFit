@@ -1,5 +1,8 @@
 export const fetchData = async (user) => {
-  const data = await fetch('http://localhost:8080/user/getData', {
+  const API = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/'
+
+
+  const data = await fetch(`${API}user/getData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

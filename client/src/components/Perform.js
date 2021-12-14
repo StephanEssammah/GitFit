@@ -8,6 +8,8 @@ import { setData } from '../redux/name/user.actions';
 import RestTimer from './subcomponents/RestTimer';
 import { calculateTotalVolume } from './utils/calculateTotalVolume';
 
+const API = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/'
+
 const Perform = () => {
   const [session, setSession] = useState([]);
   const totalTime = useSelector(state => state.user.totalTime);
@@ -35,7 +37,7 @@ const Perform = () => {
     }
 
     const activeUser = document.cookie.match(/=(.+)/);
-    const response = await fetch('http://localhost:8080/user/addSession', {
+    const response = await fetch(`${API}user/addSession`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
