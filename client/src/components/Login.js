@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setData } from '../redux/name/user.actions';
 import { Link } from 'react-router-dom'
-const API = process.env.API
+
+
+const API = process.env.NODE_ENV === 'production' ? null : 'http://localhost:8080/'
 
 const Login = () => {
   const [ username, setUsername ] = useState('');
@@ -13,7 +15,7 @@ const Login = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch('user/login', {
+    const response = await fetch(`${API}user/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
