@@ -11,9 +11,7 @@ const RestTimer = () => {
   
   const startTimer = () => {
     if(counter) return;
-    const newIntervalId = setInterval(() => {
-      setCounter(prevCount => prevCount - 1);
-    }, 1000);
+    const newIntervalId = setInterval(() => setCounter(prevCount => prevCount - 1), 100);
     setIntervalId(newIntervalId);
   }
 
@@ -51,11 +49,9 @@ const RestTimer = () => {
       }
     }
     return () => {
-      clearInterval(intervalId)
+      if (counter === 0) clearInterval(intervalId)
     }
   }, [counter])
-
-  useEffect(() => () => clearInterval(intervalId), [intervalId])
 
   useEffect(() => {
     if (stateRestTimer) {
