@@ -31,9 +31,6 @@ const newProgramReducer = (state = {title: '', exercises: []}, { type, payload }
         return {...state, exercises }
       }
       case 'setEditProgram': {
-        console.log('state:', state)
-        console.log('payload:', payload.program)
-
         return {...state, ...payload.program}
       }
       default: return state;

@@ -48,21 +48,15 @@ const ModifyProgram = () => {
         })
       })
     }
-    
     dispatch(reset())
     navigate('/')
   }
   
   useEffect(() => {
-    if (newProgram === null) {
-      navigate('/')
-    }
-
     if (location.state) {
       dispatch(setEditProgram(location.state))
-    }
-        
-  }, []);
+    }      
+  }, [dispatch, location.state]);
 
 
   return (

@@ -13,10 +13,11 @@ import History from './components/History'
 const App = () => {
   const navigate = useNavigate()
   const location = useLocation()
+  
   useEffect(() => {
     const activeUser = document.cookie.match(/=(.+)/);
     if(!activeUser && location.pathname !== '/signup') navigate('/login')
-  }, [navigate])
+  }, [navigate, location.pathname])
   
 
   return (

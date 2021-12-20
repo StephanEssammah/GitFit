@@ -41,26 +41,34 @@ const RestTimer = () => {
   }
 
   useEffect(() => {
+    if (counter === 0){
+      clearInterval(intervalId)
+      setRestTimer('Timer')
+      return;
+    }
     if (counter !== null) {
       const time = formatTime(counter)
       setRestTimer(time)
-      if (counter === 0){
-        resetRestTimer()
-      }
+      return;
     }
-    return () => {
-      if (counter === 0) clearInterval(intervalId)
-    }
-  }, [counter])
+  }, [counter, intervalId])
 
   useEffect(() => {
-    if (stateRestTimer) {
-      if (stateRestTimer.status === 'on') {
-        setCounter(stateRestTimer.time)
-        startTimer()
-      }
+    if (stateRestTimer?.status === 'on') {
+      setCounter(stateRestTimer.time)
+      const newIntervalId = setInterval(() => setCounter(prevCount => prevCount - 1), 100);
+      setIntervalId(prevState => {
+        clearInterval(prevState)
+        return newIntervalId;
+      });
     }
-  }, [stateRestTimer])
+
+    return () => {
+      setIntervalId(prevState => {
+        clearInterval(prevState)
+      })
+    }
+  }, [stateRestTimer]);
  
 
   return (

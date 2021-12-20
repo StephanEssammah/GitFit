@@ -7,8 +7,9 @@ const API = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/
 function CreateExercise({ setIsModal }) {
   const dispatch = useDispatch()
   const [name, setName] = useState('')
-  const [type, setType] = useState('reps')
+  // const [type, setType] = useState('reps')
   const nameInputRef = useRef();
+  const type = 'reps'
 
   const user = useSelector(state => state.user.user)
 
