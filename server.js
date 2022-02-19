@@ -16,7 +16,6 @@ const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@salt1.r85
 const client = new MongoClient(uri)
 
 
-
 // USER LOGIN // 
 app.post('/user/login', async (req, res) => {
   const { user } = req.body
@@ -92,7 +91,7 @@ app.post('/user/addExercise', async (req, res) => {
 
 
 // ADD PROGRAM
-app.post('/user/addProgram', async (req, res) => {
+app.post('/create-program/user/addProgram', async (req, res) => {
   const { program, user } = req.body
   program.programID = Date.now();
   try {
@@ -105,12 +104,11 @@ app.post('/user/addProgram', async (req, res) => {
       { returnDocument: 'after' })
       
     const newCol = {...response.value, programs: [...response.value.programs, program]}
-    res.json(response.value.programs);
+    res.status(201).end()
   } catch {
     res.status(500).send()
   }
 });
-
 
 
 // UPDATE PROGRAM
@@ -140,6 +138,7 @@ app.put('/user/updateProgram', async (req, res) => {
     res.status(500).send()
   }
 });
+
 
 
 
